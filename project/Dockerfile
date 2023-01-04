@@ -4,11 +4,11 @@ FROM python:3.8
 # Expose the application port 3111
 EXPOSE 3111
 
-# copy all the files from the current directory to the container working directory
-COPY ./techtreads ./techtreads
-
 # set the working directory to ./techtreads
 WORKDIR ./techtreads
+
+# copy all the files from the current directory to the container working directory
+COPY . .
 
 # Install packages defined in the requirements.txt file
 RUN pip install -r requirements.txt
