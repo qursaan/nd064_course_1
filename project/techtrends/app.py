@@ -118,14 +118,13 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
+    stdout_hdlr = logging.StreamHandler(stream=sys.stdout)
+    stderr_hdlr = logging.StreamHandler(stream=sys.stderr)
 
-   stdout_hdlr = logging.StreamHandler(stream=sys.stdout)
-   stderr_hdlr = logging.StreamHandler(stream=sys.stderr)
-
-   ## stream logs to app.log file
-   logging.basicConfig(
+    ## stream logs to app.log file
+    logging.basicConfig(
         level=logging.DEBUG,
         handlers=[stdout_hdlr, stderr_hdlr],
         format='%(levelname)s:%(name)s, %(asctime)s, %(message)s')
 
-   app.run(host='0.0.0.0', port='3111')
+    app.run(host='0.0.0.0', port='3111')
