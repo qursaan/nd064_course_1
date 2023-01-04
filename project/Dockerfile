@@ -5,7 +5,7 @@ FROM python:3.8
 EXPOSE 3111
 
 # copy all the files from the current directory to the container working directory
-ADD . .
+COPY ./techtreads ./techtreads
 
 # set the working directory to ./techtreads
 WORKDIR ./techtreads
