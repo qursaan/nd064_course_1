@@ -1,11 +1,87 @@
-## Docker commands used to build the application 
-# TODO: insert the docker build command
+# Docker commands
 
-## Docker commands used to run the application
-# TODO: insert the docker run command
+## Build the application
 
-## Docker commands used to get the application logs
-# TODO: insert the docker logs command
+1. Build an image using the Dockerfile in the current directory and tag the image as `techtrends`
+
+    ```bash
+    docker build -t techtrends .
+    ```
+
+    ![docker build](/images/01-docker-build.jpg)
+
+2. List images to make sure it build successfully
+
+    ```bash
+    docker images
+    ```
+
+    ![docker images](/images/02-docker-images.jpg)
+
+## Run the application
+
+1. Run a container in a detached mode, and map the ports ```7111``` on the host to ```3111``` on the container
+
+    ```bash
+    docker run -d -p 7111:3111 techtrends
+    ```
+
+2. List running containers to make sure it started successfully
+
+    ```bash
+    docker ps
+    ```
+
+    ![docker run](/images/03-docker-run.jpg)
+
+3. Check the output at ```http://localhost:7111/``` or ```http://127.0.0.1:7111/```
+
+    ![docker run](/images/04-docker-run-local.jpg)
+
+## Get the application logs
+
+```bash
+docker logs 658a480069d5
+```
 
 ## Logs from the container running the TechTrends application
-# TODO: paste logs from the Docker container 
+
+```bash
+* Serving Flask app 'app' (lazy loading)
+* Environment: production
+WARNING: This is a development server. Do not use it in a production deployment.
+Use a production WSGI server instead.
+* Debug mode: off
+WARNING:werkzeug, 2023-01-04 23:28:29,180,  * Running on all addresses.
+WARNING: This is a development server. Do not use it in a production deployment.
+WARNING:werkzeug, 2023-01-04 23:28:29,180,  * Running on all addresses.
+WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug, 2023-01-04 23:28:29,180,  * Running on http://172.18.0.2:3111/ (Press CTRL+C to quit)
+INFO:werkzeug, 2023-01-04 23:28:29,180,  * Running on http://172.18.0.2:3111/ (Press CTRL+C to quit)
+INFO:werkzeug, 2023-01-04 23:29:01,084, 172.18.0.1 - - [04/Jan/2023 23:29:01] "GET /?authuser=0 HTTP/1.1" 200 -
+INFO:werkzeug, 2023-01-04 23:29:01,084, 172.18.0.1 - - [04/Jan/2023 23:29:01] "GET /?authuser=0 HTTP/1.1" 200 -
+INFO:werkzeug, 2023-01-04 23:29:01,580, 172.18.0.1 - - [04/Jan/2023 23:29:01] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug, 2023-01-04 23:29:01,580, 172.18.0.1 - - [04/Jan/2023 23:29:01] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app, 2023-01-04 23:29:19,679, Article 2020 CNCF Annual Report record retrieved!
+INFO:app, 2023-01-04 23:29:19,679, Article 2020 CNCF Annual Report record retrieved!
+INFO:werkzeug, 2023-01-04 23:29:19,682, 172.18.0.1 - - [04/Jan/2023 23:29:19] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug, 2023-01-04 23:29:19,682, 172.18.0.1 - - [04/Jan/2023 23:29:19] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug, 2023-01-04 23:29:19,857, 172.18.0.1 - - [04/Jan/2023 23:29:19] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug, 2023-01-04 23:29:19,857, 172.18.0.1 - - [04/Jan/2023 23:29:19] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug, 2023-01-04 23:29:28,914, 172.18.0.1 - - [04/Jan/2023 23:29:28] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug, 2023-01-04 23:29:28,914, 172.18.0.1 - - [04/Jan/2023 23:29:28] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug, 2023-01-04 23:29:29,093, 172.18.0.1 - - [04/Jan/2023 23:29:29] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug, 2023-01-04 23:29:29,093, 172.18.0.1 - - [04/Jan/2023 23:29:29] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app, 2023-01-04 23:29:39,274, Article Test Post record created!
+INFO:app, 2023-01-04 23:29:39,274, Article Test Post record created!
+INFO:werkzeug, 2023-01-04 23:29:39,275, 172.18.0.1 - - [04/Jan/2023 23:29:39] "POST /create HTTP/1.1" 302 -
+INFO:werkzeug, 2023-01-04 23:29:39,275, 172.18.0.1 - - [04/Jan/2023 23:29:39] "POST /create HTTP/1.1" 302 -
+INFO:werkzeug, 2023-01-04 23:29:39,386, 172.18.0.1 - - [04/Jan/2023 23:29:39] "ET / HTTP/1.1" 405 -
+INFO:werkzeug, 2023-01-04 23:29:39,386, 172.18.0.1 - - [04/Jan/2023 23:29:39] "ET / HTTP/1.1" 405 -
+INFO:werkzeug, 2023-01-04 23:29:41,833, 172.18.0.1 - - [04/Jan/2023 23:29:41] "GET / HTTP/1.1" 200 -
+INFO:werkzeug, 2023-01-04 23:29:41,833, 172.18.0.1 - - [04/Jan/2023 23:29:41] "GET / HTTP/1.1" 200 -
+INFO:werkzeug, 2023-01-04 23:29:42,204, 172.18.0.1 - - [04/Jan/2023 23:29:42] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug, 2023-01-04 23:29:42,204, 172.18.0.1 - - [04/Jan/2023 23:29:42] "GET /static/css/main.css HTTP/1.1" 304 -
+```
+
+![docker logs](/images/05-docker-log.jpg)
