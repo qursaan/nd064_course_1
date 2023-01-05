@@ -3,8 +3,7 @@ name: "TechTrends - Package with Docker"
 # Trigger on every push to the main branch
 on:
   push:
-    branches: [ master ]
-
+    branches: [ main ]
 jobs:
   build:
     # Run the action on the ubuntu-latest operating system
