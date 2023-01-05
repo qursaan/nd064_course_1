@@ -33,4 +33,4 @@ jobs:
           file: project/Dockerfile      # Reference the Dockerfile for TechTrends application
           platforms: linux/amd64
           push: true
-          tags: qursan/techtrends:latest # Push the image to DockerHub with the tag techtrends:latest
+          tags: qursaan/techtrends:latest # Push the image to DockerHub with the tag techtrends:latest
