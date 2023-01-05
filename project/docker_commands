@@ -85,3 +85,4 @@ INFO:werkzeug, 2023-01-04 23:29:42,204, 172.18.0.1 - - [04/Jan/2023 23:29:42] "G
 ```
 
 ![docker logs](/images/05-docker-log.jpg)
+
