@@ -29,8 +29,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: .              # Context should be set to the project directory.
-          file: ./Dockerfile      # Reference the Dockerfile for TechTrends application
+          context: project              # Context should be set to the project directory.
+          file: project/Dockerfile      # Reference the Dockerfile for TechTrends application
           platforms: linux/amd64
           push: true
           tags: qursan/techtrends:latest # Push the image to DockerHub with the tag techtrends:latest
