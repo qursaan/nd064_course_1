@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: techtrends
+version: 1.0.0
+description: A Helm chart for Techtrends Kubernetes
+keywords:
+- techtrends
+maintainers:
+- name: qursaan
