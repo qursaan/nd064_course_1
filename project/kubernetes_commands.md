@@ -113,3 +113,32 @@
   
     ![ArgoCD login](/images/14-argocd-login.jpg)
     ![ArgoCD UI](/images/15-argocd-ui.jpg)
+
+## Deploy TechTrends with ArgoCD
+
+1. Upload Manifests to the Vagrant VM
+
+  ```bash
+  vagrant upload argocd/
+  ```
+
+2. Deploy the Application in ArgoCD
+
+  ```bash
+  kubectl apply -f argocd/helm-techtrends-prod.yaml
+  kubectl apply -f argocd/helm-techtrends-staging.yaml
+
+  kubectl get application -n argocd
+  ```
+
+  ![ArgoCD get application](/images/16-argocd-get-application.jpg)
+
+3. Access the ArgoCD UI
+
+  ![ArgoCD UI](/images/17-argocd-techtrends.jpg)
+
+4. Sync Applications
+
+  ![ArgoCD Sync Staging](/images/18-argocd-techtrends-staging.jpg)
+  ![ArgoCD Sync Staging](/images/18-argocd-techtrends-staging-2.jpg)
+  ![ArgoCD Sync Staging](/images/18-argocd-techtrends-staging-3.jpg)
