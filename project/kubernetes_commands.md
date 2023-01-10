@@ -111,4 +111,5 @@
     http://localhost:8080
     ```
   
-    ![ArgoCD login](/images/15-argocd-login.jpg)
+    ![ArgoCD login](/images/14-argocd-login.jpg)
+    ![ArgoCD UI](/images/15-argocd-ui.jpg)
