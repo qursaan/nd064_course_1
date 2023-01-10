@@ -1,15 +1,19 @@
 namespace:
   name: sandbox
+
 service:
   port: 4111
   targetPort: 3111
   protocol: TCP
   type: ClusterIP
+
 image:
   repository: qursaan/techtrends
   tag: latest
   pullPolicy: IfNotPresent
+
 replicaCount: 1
+
 resources:
   requests:
     memory: 64Mi
@@ -17,6 +21,7 @@ resources:
   limits:
     memory: 128Mi
     cpu: 500m
+
 containerPort: 3111
 livenessProb: "/healthz"
 readinessProbe: "/healthz"
