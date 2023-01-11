@@ -10,7 +10,7 @@ db_connection_count = 0
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
-    global db_connection_count
+    #global db_connection_count
     db_connection_count += 1
     return connection
 
@@ -31,7 +31,7 @@ def get_posts_count():
 
 # Function to get total number of connections to the database
 def get_db_connection_count():
-    global db_connection_count
+    #global db_connection_count
     return db_connection_count
 
 # Define the Flask application
@@ -52,7 +52,7 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-      app.logger.info('Non-existing article with id ' + post_id + ' requested!')
+      app.logger.error('Non-existing article with id ' + post_id + ' requested!')
       return render_template('404.html'), 404
     else:
       app.logger.info('Article ' + post['title'] + ' record retrieved!')
