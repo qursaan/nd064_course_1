@@ -25,13 +25,13 @@ def get_post(post_id):
 # Function to get total number of posts in the database
 def get_posts_count():
     connection = get_db_connection()
-    posts_count = connection.execute('SELECT COUNT(*) FROM posts').fetchone()
+    posts_count = connection.execute('SELECT COUNT(*) FROM posts').fetchone()[0]
     connection.close()
     return posts_count
 
 # Function to get total number of connections to the database
 def get_db_connection_count():
-    #global db_connection_count
+    global db_connection_count
     return db_connection_count
 
 # Define the Flask application
@@ -103,12 +103,14 @@ def health_status():
 # Define the Metrics endpoint
 @app.route('/metrics')
 def metrics():
+    db_connection_count = get_db_connection_count()
+    post_count = get_posts_count()
     response = app.response_class(
           response = json.dumps({
             "status":"success",
             "code"  : 0,
-            "data"  : { "post_count"          : get_posts_count(),
-                        "db_connection_count" : get_db_connection_count()}}),
+            "data"  : { "post_count"          : post_count,
+                        "db_connection_count" : db_connection_count}}),
           status   = 200,
           mimetype ='application/json'
     )
