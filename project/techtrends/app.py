@@ -126,6 +126,7 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
+    db_connection_count = 0
     stdout_hdlr = logging.StreamHandler(stream=sys.stdout)
     stderr_hdlr = logging.StreamHandler(stream=sys.stderr)
 
