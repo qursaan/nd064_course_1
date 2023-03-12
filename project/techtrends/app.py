@@ -10,28 +10,28 @@ db_connection_count = 0
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
-    global connection_count
+    global db_connection_count
     db_connection_count += 1
     return connection
 
 def close_db_connection(connection):
     global connection_count
     connection.close()
-    connection_count -= 1
+    db_connection_count -= 1
 
 # Function to get a post using its ID
 def get_post(post_id):
     connection = get_db_connection()
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
-    connection.close()
+    close_db_connection(connection)
     return post
 
 # Function to get total number of posts in the database
 def get_posts_count():
     connection = get_db_connection()
     posts_count = connection.execute('SELECT COUNT(*) FROM posts').fetchone()[0]
-    connection.close()
+    close_db_connection(connection)
     return posts_count
 
 # Function to get total number of connections to the database
@@ -48,7 +48,7 @@ app.config['SECRET_KEY'] = 'your secret key'
 def index():
     connection = get_db_connection()
     posts = connection.execute('SELECT * FROM posts').fetchall()
-    connection.close()
+    close_db_connection(connection)
     return render_template('index.html', posts=posts)
 
 # Define how each individual article is rendered 
@@ -82,7 +82,7 @@ def create():
             connection.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
                          (title, content))
             connection.commit()
-            connection.close()
+            close_db_connection(connection)
 
             ## log line
             app.logger.info('Article ' + title + ' record created!')
