@@ -15,7 +15,7 @@ def get_db_connection():
     return connection
 
 def close_db_connection(connection):
-    global connection_count
+    global db_connection_count
     connection.close()
     db_connection_count -= 1
 
