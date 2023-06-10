@@ -24,7 +24,7 @@
     ![Install k3s](/images/10-k3s-install.jpg)
 
     ```bash
-    kubectl cluster
+    kubectl cluster-info
     kubectl get nodes
     kubectl get nodes -o wide
     ```
@@ -142,3 +142,10 @@
   ![ArgoCD Sync Staging](/images/18-argocd-techtrends-staging.jpg)
   ![ArgoCD Sync Staging](/images/18-argocd-techtrends-staging-2.jpg)
   ![ArgoCD Sync Staging](/images/18-argocd-techtrends-staging-3.jpg)
+  ![ArgoCD Sync Staging](/images/18-argocd-techtrends-staging-4.jpg)
+  ![ArgoCD Sync Staging](/images/18-argocd-techtrends-staging-5.jpg)
+
+  ![ArgoCD Sync Staging](/images/18-argocd-techtrends-prod-2.jpg)
+  ![ArgoCD Sync Staging](/images/18-argocd-techtrends-prod-3.jpg)
+  ![ArgoCD Sync Staging](/images/18-argocd-techtrends-prod-4.jpg)
+  ![ArgoCD Sync Staging](/images/18-argocd-techtrends-prod-5.jpg)
