@@ -12,12 +12,14 @@ def get_db_connection():
     connection.row_factory = sqlite3.Row
     global db_connection_count
     db_connection_count += 1
+
+    app.logger.info('Database connection established. Total connections: ' + str(db_connection_count))
     return connection
 
 def close_db_connection(connection):
-    global db_connection_count
+    #global db_connection_count
     connection.close()
-    db_connection_count -= 1
+    #db_connection_count -= 1
 
 # Function to get a post using its ID
 def get_post(post_id):
@@ -114,8 +116,8 @@ def metrics():
           response = json.dumps({
             "status":"success",
             "code"  : 0,
-            "data"  : { "post_count"          : post_count,
-                        "db_connection_count" : db_connection_count}}),
+            "data"  : { "db_connection_count" : db_connection_count,
+                        "post_count"          : post_count}}),
           status   = 200,
           mimetype ='application/json'
     )
@@ -126,7 +128,6 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
-    db_connection_count = 0
     stdout_hdlr = logging.StreamHandler(stream=sys.stdout)
     stderr_hdlr = logging.StreamHandler(stream=sys.stderr)
 
